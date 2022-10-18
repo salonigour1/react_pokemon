@@ -1,11 +1,16 @@
-import "./myStyle.css";
-import React, { useState, useEffect } from "react";
+import { getDefaultNormalizer } from "@testing-library/react";
+import React, { useEffect, useState } from "react";
+import { useParams, Link } from "react-router-dom";
 
-function Details({ url, visible, onCancel }) {
+function PokemonDetail() {
+  const { id } = useParams();
+  const [loading, setLoading] = useState(true);
   const [details, setDetails] = useState([]);
+  const url = `https://pokeapi.co/api/v2/pokemon/${id}/`;
+
   useEffect(() => {
     getDetails();
-  }, [url]);
+  }, []);
 
   const getDetails = () => {
     fetch(url)
@@ -21,18 +26,18 @@ function Details({ url, visible, onCancel }) {
         };
 
         setDetails(pokemon);
+        setLoading(false);
       });
   };
 
-  return (
+  return loading ? (
+    <div className="loadingg">...Loading</div>
+  ) : (
     <>
-      <div className={`details ${visible ? "active" : ""}`}>
-        <div
-          onClick={() => onCancel()}
-          className={`cross ${visible ? "active" : ""}`}
-        >
+      <div className="details">
+        <Link to="/" className="cross">
           <ion-icon name="close-outline"></ion-icon>
-        </div>
+        </Link>
         <h1>{details.name}</h1>
         <img src={details.img} />
         <p className="pokemon height">height : {details.height} meter</p>
@@ -43,4 +48,4 @@ function Details({ url, visible, onCancel }) {
   );
 }
 
-export default Details;
+export default PokemonDetail;

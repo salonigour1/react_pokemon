@@ -40,7 +40,7 @@
   margin-bottom: 0.6rem;
   text-transform: uppercase;
 }
-.card button {
+.card_button {
   box-sizing: border-box;
   padding: 5px;
   outline: none;
@@ -52,8 +52,9 @@
   color: white;
   box-shadow: 5px 5px 8px black;
   font-weight: bold;
+  text-decoration: none;
 }
-.card button:hover {
+.card_button:hover {
   background-color: white;
   color: black;
 }
@@ -62,17 +63,34 @@
   margin: 1rem;
   flex-wrap: wrap;
   padding: 1rem;
-  justify-content: start;
+  justify-content: center;
   align-content: flex-start;
   /* align-content: center; */
 }
-
 .details {
+  box-sizing: border-box;
+  text-align: center;
+  width: 99vw;
+  height: 100vh;
+  background-color: rgb(118, 145, 159);
+  overflow: hidden;
+  padding: 2rem;
+  /* border-radius: 1rem; */
+  color: white;
+  box-shadow: 0.2rem 0.2rem 0.5rem grey;
+
+  border: 1px solid white;
+  position: fixed;
+
+  top: 0;
+  left: 0;
+}
+/* .details {
   box-sizing: border-box;
   text-align: center;
   width: 20rem;
   height: 30rem;
-  background-color: black;
+  background-color: pink;
   overflow: hidden;
   padding: 2rem;
   border-radius: 1rem;
@@ -83,31 +101,47 @@
   display: none;
   top: 10%;
   left: 40%;
+} */
+.background {
+  width: 150vw;
+  height: 100vh;
+  /* background-color: rgb(232, 226, 226); */
+  /* filter: blur(22px); */
+  position: fixed;
+  top: 0;
+  left: 0;
+  overflow: hidden;
 }
 .active {
   display: block;
 }
 .details img {
+  background-color: rgb(232, 226, 226);
   box-sizing: border-box;
   width: 12rem;
   height: 12rem;
   background-position: cover;
-  border: 5px double white;
+  border: 5px double rgb(4, 0, 0);
   box-shadow: 0.3rem 0.3rem 0.4rem rgb(101, 100, 100);
   margin: 10px;
 }
 .details h1 {
-  color: white;
+  color: rgb(16, 0, 0);
   font-size: 40px;
   padding: 10px;
   padding-bottom: 20px;
   text-transform: capitalize;
 }
 .details p {
+  text-align: right;
+  color: black;
+  font-weight: bold;
   font-size: 22px;
   text-align: left;
-  margin: 10px;
+  width: 80%;
   text-transform: uppercase;
+  margin: 12px auto;
+  text-align: center;
 }
 .cross {
   position: absolute;
@@ -170,4 +204,7 @@ ion-icon:hover {
 .btn-active:hover {
   background-color: #94a0ab;
   color: black;
+}
+.loadingg {
+  font-size: 100px;
 }

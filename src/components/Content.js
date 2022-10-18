@@ -1,19 +1,20 @@
 import React, { useState, useEffect } from "react";
+
 import Details from "./Details";
 import "./myStyle.css";
+// import { Routes, Route, useParams } from "react-router-dom";
+
 function Content(props) {
   const [data, setData] = useState([]);
-  const [visibility, setVisibility] = useState({ status: true, url: "" });
+  const [visibility, setVisibility] = useState({ status: false, url: "" });
+
+  // console.log(userId);
 
   useEffect(() => {
     getData();
-  }, []);
+  }, [data]);
 
-  const handleVisibilty = () => {
-    setVisibility(true);
-  };
-  const handleCancel = (index) => {
-    const url = data[index].url;
+  const handleCancel = () => {
     setVisibility({ status: false, url: "" });
   };
   const handleOpen = (index) => {
@@ -22,7 +23,6 @@ function Content(props) {
     console.log(visibility.status);
   };
 
-  console.log("sd");
   const getData = () => {
     const offset = (props.pageNo - 1) * 21;
 
@@ -30,8 +30,9 @@ function Content(props) {
       .then((response) => response.json())
       .then((allData) => {
         setData(allData.results);
-      });
-    console.log(data);
+        // console.log(allData);
+      })
+      .catch((error) => console.log(error));
   };
 
   return (
@@ -40,13 +41,15 @@ function Content(props) {
         return (
           <div className="card" key={index + 1}>
             <p>{curr.name}</p>
+
             <button onClick={() => handleOpen(index)}>More details</button>
           </div>
         );
       })}
+
       <Details
-        url={"https://pokeapi.co/api/v2/pokemon/2/"}
-        visible={true}
+        url={visibility.url}
+        visible={visibility.status}
         onCancel={() => handleCancel()}
       ></Details>
     </div>
