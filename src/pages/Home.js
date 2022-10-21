@@ -1,12 +1,14 @@
 import React from "react";
 import Navbar from "../components/Navbar";
 import Pokemon from "../components/Pokemon";
+import Pokemons2 from "../components/Pokemons2";
 
 function home() {
   return (
     <div>
       <Navbar />
-      <Pokemon />
+      {/* <Pokemon /> */}
+      <Pokemons2 />
     </div>
   );
 }

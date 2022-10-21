@@ -7,6 +7,7 @@ import { Routes, Route } from "react-router-dom";
 import Home from "./pages/Home";
 import SinglePokemon from "./pages/SinglePokemon";
 import Error from "./pages/Error";
+import Pokemons2 from "./components/Pokemons2";
 function App() {
   return (
     <div className="App">
